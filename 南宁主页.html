@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南宁主页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .box {
+            height: 100%;
+            width: 100%;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            /* background-color: #1B2966; */
+            flex-direction: column;
+        }
+
+        .box header {
+            height: 100px;
+            position: relative;
+            /* background-color: blue; */
+            background: url('./img/header.png') center center no-repeat;
+            background-size: 100%;
+            display: flex;
+        }
+
+        header .login {
+            position: absolute;
+            font-size: 14px;
+            right: 20px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        header .login:nth-child(1) {
+            margin-right: 10px;
+        }
+
+        .header_left,
+        .header_right {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .header_left li,
+        .header_right li {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 6px 23px;
+            border: 1px solid #0C3277;
+            background: url('./img/button.png') center center no-repeat;
+            margin-top: 42px;
+        }
+
+        .header_center {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header_center dt {
+            flex: 3.5;
+            font-size: 30px;
+            vertical-align: middle;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header_center dd {
+            flex: 1;
+            font-size: 12px;
+            vertical-align: middle;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            flex: 1;
+            background-color: #1B2966;
+        }
+
+        .homePage {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .homePageOne {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .main_left,
+        .main_right {
+            width: 320px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main_tops {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 15px;
+            border-bottom: 1px solid #0099FF;
+            ;
+        }
+
+        .main_left_top,
+        .main_left_mid,
+        .main_right_top,
+        .main_right_center,
+        .main_right_mid {
+            flex: 1;
+            border-top: 1px solid #0099FF;
+            border-bottom: 1px solid #0099FF;
+        }
+
+        .main_left_center {
+            height: 250px;
+        }
+
+        .mian table {
+            height: 245px;
+            width: 300px;
+            color: #333333;
+            background-color: #797979;
+            border-collapse: collapse;
+        }
+
+        .mian table tbody {
+            width: 100%;
+            background-color: #797979;
+        }
+
+        table tr,
+        table td {
+            width: 320px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        table td {
+            background-color: #99CCFF;
+        }
+
+        .main_center {
+            flex: 1;
+        }
+
+        .main_center_top {
+            color: white;
+            height: 60px;
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .main_center_top span {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #797979;
+        }
+
+        footer {
+            height: 30px;
+            line-height: 30px;
+            background-color: #172A6C;
+            border-top: 1px solid #0099FF;
+            text-align: right;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <header>
+            <div class="login">
+                <span>admin</span>
+                <span>退出系统</span>
+            </div>
+            <ul class="header_left">
+                <li class="btn">全局监视</li>
+                <li class="btn">勤务控制</li>
+                <li class="btn">特勤任务</li>
+                <li class="btn">协调监控</li>
+            </ul>
+            <dl class="header_center">
+                <dt>交通信号控制管理平台</dt>
+                <dd>2017年05月14日10:27</dd>
+            </dl>
+            <ul class="header_right">
+                <li class="btn">业务维护</li>
+                <li class="btn">综合管理</li>
+                <li class="btn">系统管理</li>
+            </ul>
+
+        </header>
+        <main>
+            <div class="homePage active">
+                <div class="homePageOne">
+                    <div class="main_left">
+                        <div class="main_left_top">
+                            <div class="main_tops">全局信号控制状态统计>></div>
+                            <div id="echarts" style="width: 320px;height:200px;"></div>
+                        </div>
+                        <div class="main_left_center">
+                            <div class="main_tops">信号控制路口top10>></div>
+                            <table>
+                                <tr>
+                                    <td>路口名称</td>
+                                    <td>12月控制次数</td>
+                                    <td>最新控制时间</td>
+                                </tr>
+                                <tr>
+                                    <td>中华园湖</td>
+                                    <td>50次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                                <tr>
+                                    <td>佛子岭银杉</td>
+                                    <td>40次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                                <tr>
+                                    <td>唐山秀东</td>
+                                    <td>35次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                                <tr>
+                                    <td>佛子岭玉兰</td>
+                                    <td>20次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                                <tr>
+                                    <td>佛子岭玉菊</td>
+                                    <td>15次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                                <tr>
+                                    <td>佛子岭翠竹</td>
+                                    <td>10次</td>
+                                    <td>2018-12-10<br />17:30:20</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="main_left_mid">
+                            <div class="main_tops">勤务空盒子统计曲线图>></div>
+                            <div id="echartss" style="width: 320px;height:200px;"></div>
+                        </div>
+                    </div>
+                    <div class="main_center">
+                        <div class="main_center_top">
+                            <span>全市信号点位300处</span>
+                            <span>泰尔文特接入200处</span>
+                            <span>海信接入50处</span>
+                            <span>ITC100接入500处</span>
+                        </div>
+                        <div class="main_center_bom">
+                            <div id="='allmap'"></div>
+                        </div>
+                    </div>
+                    <div class="main_right">
+                        <div class="main_right_top">
+                            <div class="main_tops">实时信号设备状态统计>></div>
+                            <div id="echart_top" style="width: 320px;height:200px;"></div>
+                        </div>
+                        <div class="main_right_center">
+                            <div class="main_tops">信号设备在线状态分类统计>></div>
+                            <div id="echart_center" style="width: 320px;height:200px;"></div>
+                        </div>
+                        <div class="main_right_mid">
+                            <div class="main_tops">信号故障统计曲线图>></div>
+                            <div id="echart_bom" style="width: 320px;height:200px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="homePage">
+                <p class="homePage_two_p">
+                    <span>勤务路线管理</span>
+                    <span>切换视图</span>
+                </p>
+                <div class="homePage_two_boms">
+                    <div class="homePage_two_Left">
+                        <p>勤务路线查询</p>
+                        <div class="homePage_two_boms_center">
+                            <input type="text"><button></button>
+                        </div>
+                        <p class="homePage_two_load">
+                            勤务路线列表
+                        </p>
+                        <!-- <div class="homePage_two_tree">
+                            <div>
+                                <p>33-路线</p>
+                                <div class="">
+                                    <li>33-1-路线</li>
+                                    <li>33-2-路线</li>
+                                    <li>33-3-路线</li>
+                                </div>
+                            </div>
+                            <div>
+                                <p>青秀路-路线</p>
+                                <div>
+                                    <li>青秀路-1-路线</li>
+                                    <li>青秀路-2-路线</li>
+                                    <li>青秀路-3-路线</li>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="container">
+                            <div class="col-sm-4">
+                                <h2>自定义图标</h2>
+                                <div id="treeview2" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="homePage">
+                3
+            </div>
+            <div class="homePage">
+                4
+            </div>
+        </main>
+        <footer>北京博研智通科技有限公司</footer>
+    </div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=Z58yC85AikWh9x5y0ycHkKRsKSXIshIm"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+<script>
+    const btn = document.querySelectorAll('.btn')
+    const homePage = document.querySelectorAll('.homePage')
+    const homePages = Array.from(homePage)
+    Array.from(btn).forEach((item, index) => {
+        item.onclick = function () {
+            console.log(index)
+            homePages.forEach((item, ind) => {
+                homePages[ind].classList.remove('active')
+                homePages[index].classList.add('active')
+            })
+        }
+    })
+
+
+    let dom = document.getElementById("echarts");
+    let myChart = echarts.init(dom);
+    let option = {
+        title: {
+            text: '',
+            color: '#0099CC'
+        },
+        Broken: {
+            color: ['#04BA18', '#04BA18', '#04BA18'],
+        },
+        tooltip: {},
+        legend: {
+            data: [''],
+            textStyle: {                 //----图例内容样式
+                color: '#0099CC',               //---所有图例的字体颜色
+                //backgroundColor:'black',  //---所有图例的字体背景色
+            },
+        },
+        grid: {
+            show: false,                 //---是否显示直角坐标系网格
+            top: '8%',   // 等价于 y: '16%'
+            left: '13%',
+            bottom: '5%',                  //---相对位置，top\bottom\left\right 
+            containLabel: false,         //---grid 区域是否包含坐标轴的刻度标签
+            // tooltip: {                   //---鼠标焦点放在图形上，产生的提示框
+            //     show: true,
+            //     trigger: 'item',         //---触发类型
+            //     textStyle: {
+            //         color: '#666',
+            //     },
+            // }
+        },
+        xAxis: {
+            data: ["自主多时段控制", "中华园湖", "勤务控制", "感应控制", "协调控制", "单点控制"],
+            axisLabel: {
+                interval: 0,
+                formatter: function (value) {
+                    var ret = "";//拼接加\n返回的类目项  
+                    var maxLength = 2;//每项显示文字个数  
+                    var valLength = value.length;//X轴类目项的文字个数  
+                    var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+                    if (rowN > 1)//如果类目项的文字大于3,  
+                    {
+                        for (var i = 0; i < rowN; i++) {
+                            var temp = "";//每次截取的字符串  
+                            var start = i * maxLength;//开始截取的位置  
+                            var end = start + maxLength;//结束截取的位置  
+                            //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧  
+                            temp = value.substring(start, end) + "\n";
+                            ret += temp; //凭借最终的字符串  
+                        }
+                        return ret;
+                    }
+                    else {
+                        return value;
+                    }
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#99FFFF", //轴的颜色
+                }
+            }
+
+        },
+        yAxis: {
+            axisTick: {
+                inside: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: "#99FFFF",
+                    height: '80%',
+                }
+            }
+
+        },
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [200, 50, 150, 70, 10, 60],
+            itemStyle: {
+                normal: {
+                    color: function (params) {
+                        var colorList = [...'#0099CC', '#FF0000'];
+                        return colorList[params.dataIndex];
+                    }
+                }
+            },
+
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+    let doms = document.getElementById('echartss')
+    let domss = document.getElementById('echart_bom')
+    let myCharts = echarts.init(doms)
+    let myChartss = echarts.init(domss)
+    let options = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisLine: {
+                lineStyle: {
+                    color: "#797979", //轴的颜色
+                }
+            }
+        },
+        axisLine: {
+            lineStyle: {
+                color: "#797979", //轴的颜色
+            }
+        },
+        grid: {
+            show: false,                 //---是否显示直角坐标系网格
+            top: '8%',   // 等价于 y: '16%'
+            left: '13%',
+            bottom: '5%',                  //---相对位置，top\bottom\left\right 
+            containLabel: false,         //---grid 区域是否包含坐标轴的刻度标签
+            // tooltip: {                   //---鼠标焦点放在图形上，产生的提示框
+            //     show: true,
+            //     trigger: 'item',         //---触发类型
+            //     textStyle: {
+            //         color: '#666',
+            //     },
+            // }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    color: "#797979", //轴的颜色
+                }
+            }
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+        }]
+    };
+    if (options && typeof options === "object") {
+        myCharts.setOption(options, true);
+        myChartss.setOption(options, true)
+    }
+    let doms_top = document.getElementById('echart_top')
+    let doms_center = document.getElementById('echart_center')
+    let myChart_top = echarts.init(doms_top)
+    let myChart_center = echarts.init(doms_center)
+    let option_top = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        color: ['#6EFE68', '#FF7596'],
+        legend: {
+            x: 'right',
+            y: 'bottom',
+            // orient: 'vertical',
+            // x: 'left',
+            data: ['直达', '邮件营销'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            showDelay: 20,
+            hideDelay: 20,
+            backgroundColor: 'rgba(255,0,0,0.7)',
+            textStyle: {
+                fontSize: '16px',
+                color: '#000'
+            },
+            formatter: '{b} : {c}个 ({d}%)'
+        },
+        series: [
+            {
+                name: '未完成',
+                type: 'pie',
+                selectedMode: 'single',
+                radius: [20, '30%'],
+
+                label: {
+                    normal: {
+                        position: 'inner'
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+            },
+            {
+                name: '已完成',
+                type: 'pie',
+                radius: ['40%', '55%'],
+                data: [
+                    { value: 332, name: '离线设备' },
+                    { value: 55, name: '异常设备' },
+                    { value: 88, name: '在线设备' }
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    if (options && typeof options === "object") {
+        myChart_top.setOption(option_top, true);
+        myChart_center.setOption(option_top, true)
+    }
+    // 百度地图API功能
+    // var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(116.404, 39.915);
+    // map.centerAndZoom(point, 15);
+    // let arrs = [
+    //     {
+    //         id: 1,
+    //         name: '33-路线',
+    //         children: [
+    //             {
+    //                 id: 1,
+    //                 name: '33-1-路线'
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: '33-2-路线'
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: '33-3-路线'
+    //             }]
+    //     },
+    //     {
+    //         id: 2,
+    //         name: '青秀路路线',
+    //         children: [
+    //             {
+    //                 id: 1,
+    //                 name: '青秀路-1-路线'
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: '青秀路2-路线'
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: '青秀路-3-路线'
+    //             }]
+    //     },
+    // ]
+
+    // const Twotree = document.querySelector('.homePage_two_tree')
+    // const divs = document.createElement('div')
+    // function child(arr, divs) {
+    //     if (Array.isArray(arr)) {
+    //         arr.forEach(item => {
+    //             const divss = document.createElement('div')
+    //             if (item.children) {
+    //                 let as = child(arr.children, divss)
+    //                 divs.appendChild(as)
+    //             }
+    //         })
+    //         return divs
+    //     }
+    // }
+    // let as = child(arrs, divs)
+    // console.log(as, 'qiaoshuai')
+    $(function () {
+
+        // 设置树的相关属性并构造树
+        $('#treeview1').treeview({
+            backColor: "#FFFFFF",
+            color: "#428bca",
+            enableLinks: true,
+            data: getTree()
+        });
+        $('#treeview2').treeview({
+            color: "#428bca",
+            expandIcon: 'glyphicon glyphicon-chevron-right',
+            collapseIcon: 'glyphicon glyphicon-chevron-down',
+            nodeIcon: 'glyphicon glyphicon-bookmark',
+            data: getTree()
+        });
+        $('#treeview3').treeview({
+            expandIcon: "glyphicon glyphicon-stop",
+            collapseIcon: "glyphicon glyphicon-unchecked",
+            nodeIcon: "glyphicon glyphicon-user",
+            color: "yellow",
+            backColor: "purple",
+            onhoverColor: "orange",
+            borderColor: "red",
+            showBorder: false,
+            showTags: true,
+            highlightSelected: true,
+            selectedColor: "yellow",
+            selectedBackColor: "darkorange",
+            data: getTree()
+        });
+
+        //定义树里的数据来源
+        function getTree() {
+            var data = [
+                {
+                    text: 'Parent 1',
+                    href: '#parent1',
+                    tags: ['4'],
+                    nodes: [
+                        {
+                            text: 'Child 1',
+                            href: '#child1',
+                            tags: ['2'],
+                            nodes: [
+                                {
+                                    text: 'Grandchild 1',
+                                    href: '#grandchild1',
+                                    tags: ['0']
+                                },
+                                {
+                                    text: 'Grandchild 2',
+                                    href: '#grandchild2',
+                                    tags: ['0']
+                                }
+                            ]
+                        },
+                        {
+                            text: 'Child 2',
+                            href: '#child2',
+                            tags: ['0']
+                        }
+                    ]
+                },
+                {
+                    text: 'Parent 2',
+                    href: '#parent2',
+                    tags: ['0']
+                },
+                {
+                    text: 'Parent 3',
+                    href: '#parent3',
+                    tags: ['0']
+                },
+                {
+                    text: 'Parent 4',
+                    href: '#parent4',
+                    tags: ['0']
+                },
+                {
+                    text: 'Parent 5',
+                    href: '#parent5',
+                    tags: ['0']
+                }
+            ];
+            return data;
+        }
+    });
+</script>
+
+</html>

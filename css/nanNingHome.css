@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.box {
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    /* background-color: #1B2966; */
+    flex-direction: column;
+}
+
+.box header {
+    height: 100px;
+    position: relative;
+    /* background-color: blue; */
+    background: url('../img/header.png') center center no-repeat;
+    background-size: 100%;
+    display: flex;
+}
+
+header .login {
+    position: absolute;
+    font-size: 14px;
+    right: 20px;
+    height: 35px;
+    line-height: 35px;
+}
+
+header .login:nth-child(1) {
+    margin-right: 10px;
+}
+
+.header_left,
+.header_right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header_left li,
+.header_right li {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 23px;
+    border: 1px solid #0C3277;
+    background: url('../img/button.png') center center no-repeat;
+    margin-top: 50px;
+}
+
+.header_center {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.header_center dt {
+    flex: 3.5;
+    font-size: 30px;
+    vertical-align: middle;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_center dd {
+    flex: 1;
+    font-size: 12px;
+    vertical-align: middle;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    flex: 1;
+    background-color: #1B2966;
+}
+
+.homePage {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.homePageOne {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main_left,
+.main_right {
+    width: 320px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_tops {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 15px;
+    border-bottom: 1px solid #0099FF;
+    ;
+}
+
+.main_left_top,
+.main_left_mid,
+.main_right_top,
+.main_right_center,
+.main_right_mid {
+    flex: 1;
+    border-top: 1px solid #0099FF;
+    border-bottom: 1px solid #0099FF;
+}
+
+.main_left_center {
+    height: 260px;
+}
+
+.mian table {
+    height: 245px;
+    width: 300px;
+    color: #333333;
+    border: 1px solid #797979;
+    border-width: 1px 0 0 1px; 
+}
+
+.mian table tbody {
+    width: 100%;
+}
+
+table tr,
+table td {
+    width: 320px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table td {
+    height: 30px;
+    border: 1px solid blue;
+    border-width: 0 1px 1px 0;
+    background-color: #99CCFF;
+}
+
+.main_center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_center_top {
+    color: white;
+    height: 60px;
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+}
+#container{
+    width: 100% !important;
+    height: 100%!important;
+}
+.main_center_top span {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #797979;
+}
+.main_center_bom{
+    flex: 1;
+}
+.homeTwo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.homePage_two_p {
+    height: 30px;
+    color: #BC831D;
+    line-height: 30px;
+    padding: 0 15px;
+    border-bottom: 1px solid #FFCA73;
+    background-color: #FFE9C0;
+}
+.homePage_two_p span:nth-child(1){
+    float: left;
+}
+.homePage_two_p span:nth-child(2){
+    float: right;
+} 
+.homePage_two_boms {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap
+}
+
+.homePage_two_Left{
+    width: 200px;
+    height: 100%;
+    background-color: white;
+}
+.homePage_two_Left_p{
+    color: black;
+    height: 35px;
+    line-height: 35px;
+    font-weight: bold;
+    padding-left: 20px;
+    border-bottom: 1px solid #E1E1E1;
+    margin: 0;
+}
+.homePage_two_boms_center{
+    padding-top: 15px;
+    height: 65px;
+    border-bottom: 1px solid #E1E1E1;
+}
+.homePage_two_boms_center input{
+    width: 115px;
+    margin: 0 10px;
+
+}
+.homePage_two_boms_center input,.homePage_two_boms_center button{
+    float: left;
+}
+.homePage_two_Right{
+    flex: 1;
+}
+footer {
+    height: 30px;
+    line-height: 30px;
+    background-color: #172A6C;
+    border-top: 1px solid #0099FF;
+    text-align: right;
+}
+.container{
+    width: 230px !important;
+    margin: 0 !important;;
+    padding: 0 !important;;
+}
+.col-sm-4{
+    width: 100% !important;
+    padding: 0!important;
+    margin: 0!important;
+}
+.active {
+    display: block;
+}

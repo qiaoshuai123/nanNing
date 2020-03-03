@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.Intersectionbox{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-size: 12px;
+}
+.topLeft{
+    width: 195px;
+    height: 170px;
+    padding: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.topLeft p{
+    color: white;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    background-color: #038BD9;
+}
+.topLeft li{
+    padding-left: 20px;
+    margin: 5px 0;
+}
+.topRight{
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #038BD9;
+}
+.topRight select{
+    color: white;
+    width: 130px;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #038BD9;
+}
+.bomRight{
+    width: 335px;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.bomRight_left,.bomRight_right{
+    height: 200px;
+    float: left;
+}
+.bomRight_left{
+    width: 195px;
+    padding-left: 25px;
+}
+.bomRight_right{
+    width: 140px;
+    background-color: #EBF4EA;
+}
+.bomRight_right dl{
+    float: left;
+    width: 50%;
+    height: 30%;
+    text-align: center;
+}

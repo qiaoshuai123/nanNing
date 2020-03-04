@@ -22,6 +22,17 @@
     background-color: #FFE3B4;
     border-bottom: 1px solid #FFC15E;
 }
+.lvBox_header b{
+    float: left;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../img/1.png') center center no-repeat;
+}
+.lvBox_header span{
+    float: left;
+    height: 40px;
+}
 .nav{
     height: 75px;
     padding-top: 20px;
@@ -146,8 +157,13 @@ height: 100%;
 }
 .conBox_bom_right_mid dl dt{
     float: left;
-    height: 100%;
-    width: 70px;
+    height: 55px;
+    width: 55px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.conBox_bom_right_mid dl dt img{
+    width: 80%;
 }
 .conBox_bom_right_mid dl dd{
     float: left;

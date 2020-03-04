@@ -4,17 +4,22 @@
     list-style: none;
     box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    width: 2px;
+    height: 6px;
+    background-color: rgba(240, 240, 240, 1);
+  }
 .lvBox{
     height: 100%;
     width: 100%;
     font-size: 12px;
 }
 .lvBox_header{
+    color: #BE851E;
     height: 40px;
     line-height: 40px;
     padding-left: 15px;
     background-color: #FFE3B4;
-
     border-bottom: 1px solid #FFC15E;
 }
 .nav{
@@ -28,7 +33,7 @@
 input{
     outline: none;
     width: 90px;
-    height: 20px;
+    height: 30px;
     border: 1px solid #E3E3E3;
 }
 .nav div:nth-child(2) input{
@@ -56,7 +61,7 @@ input{
     padding: 5px 10px 10px 10px;
 }
 .contain_head{
-    height: 30px;
+    height: 35px;
 }
 .contain_head div{
     float: left;
@@ -64,11 +69,108 @@ input{
 }
 .contain_head div:last-child{
     float: right;
+    margin-top: 10px;
     cursor: pointer;
     color: #1C5FA6;
 }
 .contain_box{
-    height: 95%;
+    height: 255px;
     width: 100%;
+    margin: 2px 0;
     border: 1px solid black;
+}
+.conBox_top{
+    color: #BE851E;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 15px;
+    background-color: #FFE3B4;
+    border-bottom: 1px solid #FFC15E;
+}
+.conBox_top_left{
+    float: left;
+}
+.conBox_top_left span:nth-child(1){
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.conBox_top_right{
+    font-size: 16px;
+    float: right;
+}
+.contain_bigBox{
+    height: 700px;
+    width: 100%;
+    padding: 0 5px;
+    overflow-y: scroll;
+}
+.conBox_bom{
+    height: 215px;
+}
+.conBox_bom_left{
+    float: left;
+    height: 100%;
+}
+.conBox_bom_left{
+    width: 230px;
+}
+.conBox_bom_right{
+    margin-left: 230px;
+}
+.conBox_bom_left img{
+width: 100%;
+height: 100%;
+}
+.conBox_bom_right_top{
+    padding-top: 4px;
+    height: 40px;
+    padding-left: 20px;
+    background-color: #F8F8F8;
+}
+.conBox_bom_right_top div{
+    float: left;
+    margin-right: 20px;
+}
+.conBox_bom_right_mid{
+    margin: 26px 0;
+    height: 80px;
+}
+.conBox_bom_right_mid dl{
+    float: left;
+    width: 225px;
+    margin: 0 3px;
+    background-color: #F8F8F8;
+}
+.conBox_bom_right_mid dl dt{
+    float: left;
+    height: 100%;
+    width: 70px;
+}
+.conBox_bom_right_mid dl dd{
+    float: left;
+}
+.conBox_bom_right_mid dl dd li{
+    text-align: right;
+    margin-top: 5px;
+}
+.conBox_bom_right_mid dl dd li span{
+    float: left;
+}
+.conBox_bom_right_bom{
+    height: 40px;
+    /* line-height: 40px; */
+    background-color: #F8F8F8;
+}
+.conBox_bom_right_bom input{
+    float: left;
+    margin: 10px 10px 0;
+    width: 20px;
+    height: 20px;
+}
+.conBox_bom_right_bom span{
+    float: left;
+    margin-top: 12px
 }

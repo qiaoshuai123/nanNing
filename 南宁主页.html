@@ -27,7 +27,8 @@
             </ul>
             <dl class="header_center">
                 <dt>交通信号控制管理平台</dt>
-                <dd>2017年05月14日10:27</dd>
+                <dd class="times"></dd>
+                <!-- 2017年05月14日10:27 -->
             </dl>
             <ul class="header_right">
                 <li class="btn">业务维护</li>
@@ -150,15 +151,16 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <div class="container">
+                            <div class="containertree">
                                 <div class="col-sm-4">
                                     <div id="treeview2" class="">
                                     </div>
                                 </div>
                             </div>
+                            <div>新建绿波路线</div>
                         </div>
                         <div class="homePage_two_Right">
-
+                            <div id="containers"></div>
                         </div>
                     </div>
                 </div>
@@ -214,7 +216,7 @@
             show: false,                 //---是否显示直角坐标系网格
             top: '8%',   // 等价于 y: '16%'
             left: '13%',
-            bottom: '5%',                  //---相对位置，top\bottom\left\right 
+            bottom: '58',                  //---相对位置，top\bottom\left\right 
             containLabel: false,         //---grid 区域是否包含坐标轴的刻度标签
             // tooltip: {                   //---鼠标焦点放在图形上，产生的提示框
             //     show: true,
@@ -275,12 +277,17 @@
             data: [200, 50, 150, 70, 10, 60],
             itemStyle: {
                 normal: {
-                    color: function (params) {
-                        var colorList = [...'#0099CC', '#FF0000'];
-                        return colorList[params.dataIndex];
-                    }
+                    color: '#0099CC'
                 }
-            },
+            }
+            // itemStyle: {
+            //     normal: {
+            //         color: function (params) {
+            //             var colorList = [...'#0099CC', '#FF0000'];
+            //             return colorList[params.dataIndex];
+            //         }
+            //     }
+            // },
 
         }]
     };;
@@ -294,7 +301,8 @@
     let options = {
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: ['0:00', '3:00', '6:00', '9:00', '12:00', '15:00', '16:00', '21:00', '24:00'],
+            boundaryGap: false,
             axisLine: {
                 lineStyle: {
                     color: "#797979", //轴的颜色
@@ -303,6 +311,7 @@
         },
         axisLine: {
             lineStyle: {
+                interval: 0,
                 color: "#797979", //轴的颜色
             }
         },
@@ -310,7 +319,7 @@
             show: false,                 //---是否显示直角坐标系网格
             top: '8%',   // 等价于 y: '16%'
             left: '13%',
-            bottom: '5%',                  //---相对位置，top\bottom\left\right 
+            bottom: '30',                 //---相对位置，top\bottom\left\right 
             containLabel: false,         //---grid 区域是否包含坐标轴的刻度标签
             // tooltip: {                   //---鼠标焦点放在图形上，产生的提示框
             //     show: true,
@@ -320,6 +329,10 @@
             //     },
             // }
         },
+        tooltip: {
+            trigger: 'item'
+        },
+
         yAxis: {
             type: 'value',
             axisLine: {
@@ -329,9 +342,16 @@
             }
         },
         series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [820, 932, 901, 934, 1290, 1330, 1320, 900, 950],
             type: 'line',
-            smooth: true
+            smooth: true,
+            // itemStyle: {
+            //     normal: {
+            //         label: {
+            //             show: true
+            //         },
+            //     }
+            // }
         }]
     };
     if (options && typeof options === "object") {
@@ -347,15 +367,16 @@
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-        color: ['#6EFE68', '#FF7596'],
+        color: ['#0189FF', '#FF8C3C', '#F10282'],
         legend: {
             x: 'right',
             y: 'bottom',
+            orient: 'vertical',
             // orient: 'vertical',
             // x: 'left',
-            data: ['直达', '邮件营销'],
+            data: ['离线设备', '在线设备', '异常设备'],
             textStyle: {
-                color: '#fff'
+                color: '#FFFFFF'
             }
         },
         tooltip: {
@@ -411,9 +432,15 @@
         myChart_center.setOption(option_top, true)
     }
     // 百度地图API功能
+    //首页地图
     var map = new BMap.Map("container");
     var point = new BMap.Point(116.404, 39.915);
     map.centerAndZoom(point, 15);
+    //勤务地图
+    var maps = new BMap.Map("containers")
+    var points = new BMap.Point(116.404, 39.915);
+    maps.centerAndZoom(points, 15);
+
     let arrs = [
         {
             id: 1,
@@ -593,6 +620,22 @@
     //         console.log(123456)
     //     }
     // })
+    function add0(m) { return m < 10 ? '0' + m : m }
+    function format(shijianchuo) {
+        //shijianchuo是整数，否则要parseInt转换
+            var time = new Date(shijianchuo);
+            var y = time.getFullYear();
+            var m = time.getMonth() + 1;
+            var d = time.getDate();
+            var h = time.getHours();
+            var mm = time.getMinutes();
+            var s = time.getSeconds();
+            var tim= y + '年' + this.add0(m) + '月' + this.add0(d) + '日 ' + this.add0(h) + ':' + this.add0(mm) + ':' + this.add0(s);
+            $('.times').html(tim)
+    }
+    setInterval(() => {
+     format(new Date() * 1)   
+    }, 1000); 
 </script>
 
 </html>

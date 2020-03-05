@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时钟管理</title>
+    <link rel="stylesheet" href="./css/clocks.css">
+    <link rel="stylesheet" href="./utils/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="lvBox">
+        <p class="lvBox_header">
+            <b></b>
+            <span>时钟管理</span>
+        </p>
+        <div class="nav">
+            <div>关键字<input type="text"></div>
+            <div>所属区域<select name="" id="">
+                <option value="全部">全部</option>
+            </select></div>
+            <div>所属路口<select name="" id="">
+                <option value="全部">全部</option>
+            </select></div>
+            <div>信号机控制系统<select name="" id="">
+                <option value="全部">全部</option>
+            </select></div>
+            <div>
+                <button>查询</button>
+            </div>
+        </div>
+        <div class="contain">
+            <div class="contain_head">
+                <div>校时服务器时间:<span>2020-03-05 10:44:33</span></div>
+                <div>上一次统一校时时间:<span>2020-03-05 10:44:33</span></div>
+            </div>
+            <div class="contain_bigBox">
+                <table class="tables">
+                    <tr>
+                        <th>区域名称</th>
+                        <th>路口名称</th>
+                        <th>信号控制系统(厂商)</th>
+                        <th>信号机时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        <td>xxxx</td>
+                        <td>xxxx</td>
+                        <td>海信</td>
+                        <td>2020-03-05 10:44:33</td>
+                        <td>校时</td>
+                    </tr>
+                    <tr>
+                        <td>xxxx</td>
+                        <td>xxxx</td>
+                        <td>泰尔文特</td>
+                        <td>2020-03-05 10:44:33</td>
+                        <td>校时</td>
+                    </tr>
+                    <tr>
+                        <td>xxxx</td>
+                        <td>xxxx</td>
+                        <td>泰尔文特</td>
+                        <td>2020-03-05 10:44:33</td>
+                        <td>校时</td>
+                    </tr>
+                </table>
+                <div class="pagebox">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./utils/jquery.min.js"></script>
+<script src="./utils/bootstrap.min.js"></script>
+<script>
+    $('.pagination').click(function(e){
+        console.log(e.target.text)
+    })
+</script>
+
+</html>

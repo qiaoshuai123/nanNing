@@ -18,10 +18,10 @@
             <div>干线名称:<input type="text"></div>
             <div>备注描述:<input type="text"></div>
             <div>
-                <button>立即执行</button>
-                <button>启动方案</button>
-                <button>时距图</button>
-                <button>保存</button>
+                <button class='goBtn'>立即执行</button>
+                <button class="goProgramme">启动方案</button>
+                <button class="timeInDiagram">时距图</button>
+                <button class="Preservation">保存</button>
             </div>
         </div>
         <div class="contain">
@@ -50,7 +50,7 @@
                         <div class="conBox_bom_right">
                             <div class="conBox_bom_right_top">
                                 <div>相序:<input type="text"></div>
-                                <div>协调相位:<input type="text"></div> 
+                                <div><span>协调相位:</span><b><img src="./img/u148.png" alt=""></b></div>
                                 <div>协调相位差:<input type="text"></div>
                                 <div>相对距离:<input type="text"></div>
                                 <div>平均速度:<input type="text"></div>
@@ -94,7 +94,7 @@
                         <div class="conBox_bom_right">
                             <div class="conBox_bom_right_top">
                                 <div>相序:<input type="text"></div>
-                                <div>协调相位:<input type="text"></div> 
+                                <div><span>协调相位:</span><b><img src="./img/u148.png" alt=""></b></div>
                                 <div>协调相位差:<input type="text"></div>
                                 <div>相对距离:<input type="text"></div>
                                 <div>平均速度:<input type="text"></div>
@@ -138,7 +138,7 @@
                         <div class="conBox_bom_right">
                             <div class="conBox_bom_right_top">
                                 <div>相序:<input type="text"></div>
-                                <div>协调相位:<input type="text"></div> 
+                                <div><span>协调相位:</span><b><img src="./img/u148.png" alt=""></b></div>
                                 <div>协调相位差:<input type="text"></div>
                                 <div>相对距离:<input type="text"></div>
                                 <div>平均速度:<input type="text"></div>
@@ -169,5 +169,15 @@
         </div>
     </div>
 </body>
+<script>
+    // <button class='goBtn'>立即执行</button>
+    // <button class="goProgramme">启动方案</button>
+    // <button class="timeInDiagram">时距图</button>
+    // <button class="Preservation">保存</button>
+    const goBtn = document.getElementsByClassName('.goBtn') //立即执行
+    const goProgramme = document.getElementsByClassName('.goProgramme') //启动方案
+    const timeInDiagram = document.getElementsByClassName('.timeInDiagram') //时距图
+    const Preservation = document.getElementsByClassName('.Preservation') //保存
+</script>
 
 </html>

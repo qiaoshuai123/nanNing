@@ -1,0 +1,38 @@
+.tree-line {
+  font-size: 15px;
+  color: #999;
+}
+
+.tree-line .tree-content {
+	padding: 10px;
+  white-space: nowrap;
+}
+
+.tree-line>.tree-line {
+  margin-left: 35px;
+  display: none;
+}
+
+.tree-line.expand>.tree-line {
+  display: block;
+}
+
+.tree-content .icon {
+  font-size: 22px;
+  color: #999;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 7px;
+}
+
+.tree-line.expand>.tree-content>.icon-expand {
+  display: none;
+}
+
+.tree-line:not(.expand)>.tree-content>.icon-shrink {
+  display: none;
+}
+
+.tree-line.leaf .icon{
+  display: none;
+}

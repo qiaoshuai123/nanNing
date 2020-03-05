@@ -45,6 +45,7 @@ input{
     outline: none;
     width: 90px;
     height: 30px;
+    margin-left: 10px;
     border: 1px solid #E3E3E3;
 }
 .nav div:nth-child(2) input{
@@ -144,6 +145,22 @@ height: 100%;
 .conBox_bom_right_top div{
     float: left;
     margin-right: 20px;
+}
+.conBox_bom_right_top div:nth-child(2) span,.conBox_bom_right_top div:nth-child(2) b{
+    float: left;
+}
+.conBox_bom_right_top div:nth-child(2) span{
+    margin-top: 7px;
+}
+.conBox_bom_right_top div b{
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+}
+.conBox_bom_right_top div b img{
+    width: 100%;
+    height: 100%;
 }
 .conBox_bom_right_mid{
     margin: 26px 0;
